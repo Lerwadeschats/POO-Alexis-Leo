@@ -28,6 +28,8 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
         /// </summary>
         TYPE _baseType;
 
+
+        int _maxHealth; 
         public Character(int baseHealth, int baseAttack, int baseDefense, int baseSpeed, TYPE baseType)
         {
             _baseHealth = baseHealth;
@@ -35,6 +37,7 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
             _baseDefense = baseDefense;
             _baseSpeed = baseSpeed;
             _baseType = baseType;
+            _maxHealth = _baseHealth;
         }
         /// <summary>
         /// HP actuel du personnage
@@ -48,8 +51,12 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
         {
             get
             {
-                return _baseHealth;
+                return _maxHealth;
                 throw new NotImplementedException();
+            }
+            set
+            {
+                _maxHealth = value;
             }
         }
         /// <summary>
@@ -62,7 +69,10 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
                 return _baseAttack;
                 throw new NotImplementedException();
             }
-            
+            set
+            {
+                _baseAttack = value;
+            }
         }
         /// <summary>
         /// DEF, prendre en compte base et equipement potentiel
@@ -74,6 +84,10 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
                 return _baseDefense;
                 throw new NotImplementedException();
             }
+            set
+            {
+                _baseDefense = value;
+            }
         }
         /// <summary>
         /// SPE, prendre en compte base et equipement potentiel
@@ -84,6 +98,10 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
             {
                 return _baseSpeed;
                 throw new NotImplementedException();
+            }
+            set
+            {
+                _baseSpeed = value;
             }
         }
         /// <summary>
@@ -116,20 +134,26 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
         /// <exception cref="ArgumentNullException">Si equipement est null</exception>
         public void Equip(Equipment newEquipment)
         {
+            if (newEquipment == null)
+            {
+                throw new ArgumentNullException();
+            }
             CurrentEquipment = newEquipment;
-            CurrentHealth  += newEquipment.BonusHealth;
-            _baseAttack += newEquipment.BonusAttack;
-            _baseDefense += newEquipment.BonusDefense;
-            _baseSpeed += newEquipment.BonusSpeed;
-            return;
-            throw new NotImplementedException();
+            MaxHealth  += newEquipment.BonusHealth;
+            Attack += newEquipment.BonusAttack;
+            Defense += newEquipment.BonusDefense;
+            Speed += newEquipment.BonusSpeed;
         }
         /// <summary>
         /// Desequipe l'objet en cours au personnage
         /// </summary>
         public void Unequip()
         {
-            throw new NotImplementedException();
+            MaxHealth -= CurrentEquipment.BonusHealth;
+            Attack -= CurrentEquipment.BonusAttack;
+            Defense -= CurrentEquipment.BonusDefense;
+            Speed -= CurrentEquipment.BonusSpeed;
+            CurrentEquipment = null;
         }
 
     }
