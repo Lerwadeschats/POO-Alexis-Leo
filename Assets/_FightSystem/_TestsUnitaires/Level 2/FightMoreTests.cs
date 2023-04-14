@@ -24,7 +24,7 @@ namespace _2023_GC_A2_Partiel_POO.Tests.Level_2
 
         [Test]
 
-        public void Heal()
+        public void StatusEffect()
         {
 
         }
