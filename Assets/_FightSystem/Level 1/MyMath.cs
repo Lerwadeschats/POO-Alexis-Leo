@@ -12,6 +12,7 @@ namespace _2023_GC_A2_Partiel_POO.Level_1
         // classe Math & MathF
         public static int Abs(int input)
         {
+            return Math.Abs(input); 
             throw new NotImplementedException();
         }
 
@@ -19,6 +20,18 @@ namespace _2023_GC_A2_Partiel_POO.Level_1
         // classe Math & MathF
         public static int Clamp(int input, int min, int max)
         {
+            if (input < min)
+            {
+                return min;
+            }
+            else if (input > max)
+            {
+                return max;
+            }
+            else
+            {
+                return input;
+            }
             throw new NotImplementedException();
         }
 
@@ -26,6 +39,8 @@ namespace _2023_GC_A2_Partiel_POO.Level_1
         // classe Math & MathF
         public static int Floor(float input)
         {
+            int result = (int) input;
+            return result;
             throw new NotImplementedException();
         }
 
@@ -33,6 +48,14 @@ namespace _2023_GC_A2_Partiel_POO.Level_1
         // classe Math & MathF
         public static int Ceil(float input)
         {
+            if (input%1== 0)
+            {
+                return (int) input;
+            }
+            else
+            {
+                return (int) input + 1;
+            }
             throw new NotImplementedException();
         }
 
@@ -40,6 +63,14 @@ namespace _2023_GC_A2_Partiel_POO.Level_1
         // classe Math & MathF
         public static int Round(float input)
         {
+            if (input - (int)input >= 0.50)
+            {
+                return (int) input + 1 ;
+            }
+            else
+            {
+                return (int) input;
+            }
             throw new NotImplementedException();
         }
 
@@ -48,6 +79,7 @@ namespace _2023_GC_A2_Partiel_POO.Level_1
         // LINQ & Enumerable
         public static float CalculateAverage(int[] input)
         {
+
             throw new NotImplementedException();
         }
 
