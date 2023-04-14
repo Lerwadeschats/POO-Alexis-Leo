@@ -38,14 +38,29 @@ namespace _2023_GC_A2_Partiel_POO.Tests.Level_2
         public void FightWithSleep()
         {
             Character pikachu = new Character(100, 50, 30, 20, TYPE.NORMAL);
-            Character mewtwo = new Character(1000, 50, 0, 200, TYPE.NORMAL);
+            Character mewtwo = new Character(100, 50, 30, 20, TYPE.NORMAL);
             Fight f = new Fight(pikachu, mewtwo);
             Punch p = new Punch();
             MagicalGrass g = new MagicalGrass();
 
             f.ExecuteTurn(g, p);
 
-            Assert.That(mewtwo.CurrentStatus, Is.EqualTo(StatusPotential.SLEEP));
+            Assert.IsTrue(mewtwo.CurrentStatus is SleepStatus);
+        }
+
+        [Test]
+        public void FightWithBurn()
+        {
+            Character pikachu = new Character(100, 50, 30, 20, TYPE.NORMAL);
+            Character mewtwo = new Character(100, 50, 30, 20, TYPE.NORMAL);
+            Fight f = new Fight(pikachu, mewtwo);
+            Punch p = new Punch();
+            FireBall b = new FireBall();
+
+            f.ExecuteTurn(b, p);
+
+            Assert.IsTrue(mewtwo.CurrentStatus is BurnStatus);
+            Assert.AreEqual(5, mewtwo.CurrentStatus.RemainingTurn);
         }
 
         [Test]
@@ -60,8 +75,8 @@ namespace _2023_GC_A2_Partiel_POO.Tests.Level_2
             Assert.That(c.CurrentHealth, Is.EqualTo(70));
         }
 
+        
         [Test]
-
         public void HealWithMaxLife()
         {
             var c = new Character(100, 50, 30, 20, TYPE.NORMAL);
@@ -71,22 +86,6 @@ namespace _2023_GC_A2_Partiel_POO.Tests.Level_2
             c.Heal();
             Assert.That(c.CurrentHealth, Is.EqualTo(100));
         }
-
-        [Test]
-
-        public void DealDamage()
-        {
-            Character mystherbe = new Character(100, 50, 30, 20, TYPE.GRASS);
-            Character aquali = new Character(100, 50, 0, 200, TYPE.WATER);
-            Fight f = new Fight(aquali, mystherbe);
-            FireBall b = new FireBall();
-            MagicalGrass g = new MagicalGrass();
-            f.ExecuteTurn(g, b);
-            TypeResolver.GetFactor(TYPE b, aquali)
-        }
-
-
-
     }
 
 }

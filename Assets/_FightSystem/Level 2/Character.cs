@@ -147,6 +147,7 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
             {
                 CurrentHealth -= ((s.Power + (int)(0.1f * e.Attack) - Defense));
             }
+
             CurrentStatus =  StatusEffect.GetNewStatusEffect(s.Status);
         }
         /// <summary>
