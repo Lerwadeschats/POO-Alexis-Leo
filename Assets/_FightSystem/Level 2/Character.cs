@@ -39,7 +39,7 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
         /// <summary>
         /// HP actuel du personnage
         /// </summary>
-        public int CurrentHealth { get; private set; }
+        public int CurrentHealth { get => _baseHealth ; private set => _baseHealth = value; }
         public TYPE BaseType { get => _baseType;}
         /// <summary>
         /// HPMax, prendre en compte base et equipement potentiel
@@ -48,6 +48,7 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
         {
             get
             {
+                return _baseHealth;
                 throw new NotImplementedException();
             }
         }
@@ -58,8 +59,10 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
         {
             get
             {
+                return _baseAttack;
                 throw new NotImplementedException();
             }
+            
         }
         /// <summary>
         /// DEF, prendre en compte base et equipement potentiel
@@ -68,6 +71,7 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
         {
             get
             {
+                return _baseDefense;
                 throw new NotImplementedException();
             }
         }
@@ -78,6 +82,7 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
         {
             get
             {
+                return _baseSpeed;
                 throw new NotImplementedException();
             }
         }
@@ -111,6 +116,12 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
         /// <exception cref="ArgumentNullException">Si equipement est null</exception>
         public void Equip(Equipment newEquipment)
         {
+            CurrentEquipment = newEquipment;
+            CurrentHealth  += newEquipment.BonusHealth;
+            _baseAttack += newEquipment.BonusAttack;
+            _baseDefense += newEquipment.BonusDefense;
+            _baseSpeed += newEquipment.BonusSpeed;
+            return;
             throw new NotImplementedException();
         }
         /// <summary>

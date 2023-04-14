@@ -18,6 +18,7 @@ namespace _2023_GC_A2_Partiel_POO.Level_1
         // LINQ
         public static string ReplaceNameTag(string baseString, string elementToInsert)
         {
+            
             throw new NotImplementedException();
         }
 
