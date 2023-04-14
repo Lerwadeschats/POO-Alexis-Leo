@@ -172,11 +172,22 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
         public void Unequip()
         {
             MaxHealth -= CurrentEquipment.BonusHealth;
+            CurrentHealth -= CurrentEquipment.BonusHealth;
             Attack -= CurrentEquipment.BonusAttack;
             Defense -= CurrentEquipment.BonusDefense;
             Speed -= CurrentEquipment.BonusSpeed;
             CurrentEquipment = null;
         }
-
+        public int Heal()
+        {
+            if (CurrentHealth + 50 <= MaxHealth)
+            {
+                return CurrentHealth += 50;
+            }
+            else
+            {
+                return CurrentHealth = MaxHealth;
+            }
+        }
     }
 }

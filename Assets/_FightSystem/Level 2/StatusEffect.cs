@@ -77,6 +77,7 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
     {
         public SleepStatus() : base(5, 0, false, 0f)
         {
+            int feur; 
         }
     }
 
