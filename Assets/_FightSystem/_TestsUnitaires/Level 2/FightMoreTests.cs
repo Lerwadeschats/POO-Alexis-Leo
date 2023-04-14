@@ -86,6 +86,29 @@ namespace _2023_GC_A2_Partiel_POO.Tests.Level_2
             c.Heal();
             Assert.That(c.CurrentHealth, Is.EqualTo(100));
         }
+
+        [Test]
+        public void FightWithSpeedBoost()
+        {
+            //=> le premier qui attaque tuera le deuxième (plus de dégats que de hp)
+            //Fight with the object
+            Character pikachu = new Character(40, 50, 0, 20, TYPE.NORMAL);
+            Equipment boots = new Equipment(0, 0, 0, 60);
+            Character reptincel = new Character(40, 50, 0, 50, TYPE.FIRE);
+            Punch p = new Punch();
+            pikachu.Equip(boots);
+            Fight f1 = new Fight(pikachu, reptincel);
+            f1.ExecuteTurn(p, p);
+            Assert.That(pikachu.IsAlive, Is.EqualTo(true));
+            Assert.That(reptincel.IsAlive, Is.EqualTo(false));
+
+            //Then fight without it
+            pikachu.Unequip();
+            Fight f2 = new Fight(pikachu, reptincel);
+            f2.ExecuteTurn(p, p);
+            Assert.That(pikachu.IsAlive, Is.EqualTo(false));
+            Assert.That(reptincel.IsAlive, Is.EqualTo(true));
+        }
     }
 
 }
